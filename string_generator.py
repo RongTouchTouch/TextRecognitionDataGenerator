@@ -11,9 +11,13 @@ def create_strings_from_file(file_names, text_length, num):
         Create all strings by reading lines in specified files
 
         P.S. If the file does not contains any blank line,
-             better to change line 19 into 'lines = [l.strip()[0:text_length] for l in f.readlines()]'
+             better to change line 19-27 into 'lines = [l.strip()[0:text_length] for l in f.readlines()]'
+
+        P.P.S The filename should be alphabet or number.
     """
     strings = []
+    if len(file_names)==0:
+        file_names[0] = 'files/16.txt'
     for filename in file_names:
         with open(filename, 'r', encoding="utf8") as f:
             content = f.readlines()

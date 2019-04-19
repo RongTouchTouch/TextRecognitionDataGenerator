@@ -3,6 +3,7 @@ import random
 import pandas as pd
 import numpy as np
 import cv2
+import time
 
 from tqdm import tqdm
 from string_generator import (
@@ -56,7 +57,7 @@ def load_fonts(lang):
         return [os.path.join('fonts/latin', font) for font in os.listdir('fonts/latin')]
 
 
-def gen_text_img(num, use_file, text_length, font_size, font_id, space_width, bg_gray, text_color,
+def gen_text_img(num, use_file, text_length, font_size, font_id, space_width, background, text_color,
                  blur, distorsion, skew_angle, thread_count):
     """
 
@@ -66,7 +67,7 @@ def gen_text_img(num, use_file, text_length, font_size, font_id, space_width, bg
     :param font_size:
     :param font_id:
     :param space_width:
-    :param bg_gray:
+    :param background:
     :param text_color:
     :param blur:
     :param distorsion:
@@ -80,7 +81,6 @@ def gen_text_img(num, use_file, text_length, font_size, font_id, space_width, bg
     extension = 'jpg'
     random_skew = False
     random_blur = False
-    background = 0
     distorsion_orientation = 0
     handwritten = False
     name_format = 0
@@ -89,9 +89,6 @@ def gen_text_img(num, use_file, text_length, font_size, font_id, space_width, bg
     orientation = 0
     margins = (5, 5, 5, 5)
     fit = False
-
-    df = pd.DataFrame(columns=['index', 'text', 'img_shape'])
-    target = np.empty(shape=[0, 0, 3])
 
     language = 'cn'
     lang_dict = load_dict(language)
@@ -106,6 +103,7 @@ def gen_text_img(num, use_file, text_length, font_size, font_id, space_width, bg
         strings = create_strings_from_dict(text_length, num, lang_dict)
 
     p = Pool(thread_count)
+    result = []
     for _, img in p.imap_unordered(
             FakeTextDataGenerator.generate_from_tuple,
             zip(
@@ -133,12 +131,12 @@ def gen_text_img(num, use_file, text_length, font_size, font_id, space_width, bg
                 [fit] * num
             )
     ):
-        df.loc[_[0]] = _
-        if target.shape[0] == 0:
-            target = np.asarray(img)
-        else:
-            target = np.concatenate((target, np.asarray(img)), axis=1)
+        result.append((_, img))
+
     p.terminate()
+    target = np.concatenate([img for _, img in result], axis=1)
+    df = pd.concat([meta for meta, _ in result])
+
     return df, target
 
 
@@ -149,13 +147,17 @@ if __name__ == '__main__':
     font_size = 40
     font_id = 1
     space_width = 1
-    bg_gray = 223
+    background = 0
     text_color = '#282828'
     blur = 0
     distorsion = 0
-    skew_angle = 0
-    thread_count = 1
+    skew_angle = 1
+    thread_count = 8
 
-    df, target = gen_text_img(num, use_file, text_length, font_size, font_id, space_width, bg_gray, text_color,
+    start_time = time.time()
+    df, target = gen_text_img(num, use_file, text_length, font_size, font_id, space_width, background, text_color,
                               blur, distorsion, skew_angle, thread_count)
     cv2.imwrite(os.path.join('out/' + 'target.jpg'), target)
+
+    end_time = time.time()
+    print('time for synthesize 10 image:', end_time - start_time)

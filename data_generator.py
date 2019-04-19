@@ -1,6 +1,7 @@
 import os
 import random
 import numpy as np
+import pandas as pd
 
 from PIL import Image, ImageFilter
 import cv2
@@ -8,11 +9,6 @@ import cv2
 import computer_text_generator
 import background_generator
 import distorsion_generator
-try:
-    import handwritten_text_generator
-except ImportError as e:
-    print('Missing modules for handwritten text generation.')
-
 
 class FakeTextDataGenerator(object):
     @classmethod
@@ -147,11 +143,9 @@ class FakeTextDataGenerator(object):
         final_image.save(os.path.join(out_dir, image_name))
 
         # Resize
-        #final_image = cv2.resize(final_image, (final_image.shape[1] * 32 / final_image.shape[0], 32))
+        final_image = np.asarray(final_image)
+        final_image = cv2.resize(final_image, (int(final_image.shape[1] * 32 / final_image.shape[0]), 32))
 
-        data = []
-        data.append(index)
-        data.append(text)
-        data.append(final_image.size)
+        data = pd.DataFrame(np.array([[index,text,final_image.size]]), columns=['index', 'text', 'img_shape'])
 
         return data, final_image
