@@ -58,7 +58,7 @@ def load_fonts(lang):
 
 
 def gen_text_img(num, use_file, text_length, font_size, font_id, space_width, background, text_color,
-                 blur, distorsion, skew_angle, thread_count):
+                 blur, random_blur, distorsion, skew_angle, random_skew, thread_count):
     """
 
     :param num:
@@ -79,8 +79,6 @@ def gen_text_img(num, use_file, text_length, font_size, font_id, space_width, ba
     # Constant
     output_dir = 'out/'
     extension = 'jpg'
-    random_skew = False
-    random_blur = False
     distorsion_orientation = 0
     handwritten = False
     name_format = 0
@@ -111,14 +109,14 @@ def gen_text_img(num, use_file, text_length, font_size, font_id, space_width, ba
                 strings,
                 [fonts[font_id]] * num if font_id else [fonts[random.randrange(0, len(fonts))] for _ in range(0, num)],
                 [output_dir] * num,
-                [font_size] * num,
+                [font_size] * num if font_size else [random.randrange(24, 40) for _ in range(0, num)],
                 [extension] * num,
                 [skew_angle] * num,
                 [random_skew] * num,
                 [blur] * num,
                 [random_blur] * num,
-                [background] * num,
-                [distorsion] * num,
+                [background] * num if background>=0 else [random.randint(0, 2) for _ in range(0, num)],
+                [distorsion] * num if distorsion>=0 else [random.randint(0, 2) for _ in range(0, num)],
                 [distorsion_orientation] * num,
                 [handwritten] * num,
                 [name_format] * num,
@@ -136,6 +134,7 @@ def gen_text_img(num, use_file, text_length, font_size, font_id, space_width, ba
     p.terminate()
     target = np.concatenate([img for _, img in result], axis=1)
     df = pd.concat([meta for meta, _ in result])
+    df = df.reset_index(drop=True)
 
     return df, target
 
@@ -144,20 +143,26 @@ if __name__ == '__main__':
     num = 10
     use_file = 1
     text_length = 10
-    font_size = 40
+    font_size = 0
     font_id = 1
     space_width = 1
-    background = 0
     text_color = '#282828'
-    blur = 0
-    distorsion = 0
-    skew_angle = 1
     thread_count = 8
+    
+    #skew & blur 
+    random_skew = True
+    skew_angle = 3
+    random_blur = True
+    blur = 1
+    
+    #distorsion & background Use
+    distorsion = -1
+    background = -1
 
     start_time = time.time()
     df, target = gen_text_img(num, use_file, text_length, font_size, font_id, space_width, background, text_color,
-                              blur, distorsion, skew_angle, thread_count)
+                              blur,random_blur, distorsion, skew_angle, random_skew, thread_count)
     cv2.imwrite(os.path.join('out/' + 'target.jpg'), target)
-
     end_time = time.time()
-    print('time for synthesize 10 image:', end_time - start_time)
+    print('time for synthesize 1000 image:', end_time - start_time)
+    print(df)

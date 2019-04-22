@@ -44,12 +44,13 @@ class FakeTextDataGenerator(object):
             image = computer_text_generator.generate(text, font, text_color, size, orientation, space_width, fit)
 
         random_angle = random.randint(0-skewing_angle, skewing_angle)
-
-        rotated_img = image.rotate(skewing_angle if not random_skew else random_angle, expand=1)
+        skewing_angle = skewing_angle if not random_skew else random_angle
+        rotated_img = image.rotate(skewing_angle, expand=1)
 
         #############################
         # Apply distorsion to image #
         #############################
+
         if distorsion_type == 0:
             distorted_img = rotated_img # Mind = blown
         elif distorsion_type == 1:
@@ -118,10 +119,11 @@ class FakeTextDataGenerator(object):
         ##################################
         # Apply gaussian blur #
         ##################################
-
+        
+        blur = blur if not random_blur else random.randint(0, blur)
         final_image = background.filter(
             ImageFilter.GaussianBlur(
-                radius=(blur if not random_blur else random.randint(0, blur))
+                radius=(blur)
             )
         )
 
@@ -140,12 +142,12 @@ class FakeTextDataGenerator(object):
 
         # Save the image
         final_image = final_image.convert('RGB')
-        final_image.save(os.path.join(out_dir, image_name))
+        #final_image.save(os.path.join(out_dir, image_name))
 
         # Resize
         final_image = np.asarray(final_image)
         final_image = cv2.resize(final_image, (int(final_image.shape[1] * 32 / final_image.shape[0]), 32))
 
-        data = pd.DataFrame(np.array([[index,text,final_image.size]]), columns=['index', 'text', 'img_shape'])
+        data = pd.DataFrame(np.array([[index,text,final_image.shape[1],size, font,skewing_angle,distorsion_type,blur,background_type]]), columns=['index','text', 'img_shape','font_size','font_id','skew_angle','distorsion_type','background_type','blur'])
 
         return data, final_image
