@@ -147,7 +147,13 @@ class FakeTextDataGenerator(object):
         # Resize
         final_image = np.asarray(final_image)
         final_image = cv2.resize(final_image, (int(final_image.shape[1] * 32 / final_image.shape[0]), 32))
+        
+        font = font.split('/')[2].split('.')[0]
+                          
+        background = ['Guassian','Plain white','Quasicrystal']
+        distorsion = ['None','Sine wave','Cosine wave']
+        
+        data = pd.DataFrame(np.array([[index,text,len(text),final_image.shape[1],size, font,skewing_angle,blur,distorsion[distorsion_type],background[background_type]]]), columns=['index','text','text_length', 'img_shape','font_size','font_id','skew_angle','blur','distorsion_type','background_type'])
 
-        data = pd.DataFrame(np.array([[index,text,final_image.shape[1],size, font,skewing_angle,distorsion_type,blur,background_type]]), columns=['index','text', 'img_shape','font_size','font_id','skew_angle','distorsion_type','background_type','blur'])
 
         return data, final_image

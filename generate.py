@@ -4,11 +4,13 @@ import pandas as pd
 import numpy as np
 import cv2
 import time
+import threading
 
 from tqdm import tqdm
 from string_generator import (
     create_strings_from_dict,
     create_strings_from_file,
+    create_strings_from_file_random,
     create_strings_from_wikipedia,
     create_strings_randomly
 )
@@ -95,12 +97,16 @@ def gen_text_img(num, use_file, text_length, font_size, font_id, space_width, ba
 
     if use_file:
         file_names = load_files(language)
-        strings = create_strings_from_file(file_names, text_length, num)
+        if text_length==-1:
+            strings = create_strings_from_file_random(file_names, num)
+        else:
+            strings = create_strings_from_file(file_names, text_length, num)
     else:
         # to be implemented
         strings = create_strings_from_dict(text_length, num, lang_dict)
 
     p = Pool(thread_count)
+    mutex = threading.Lock()
     result = []
     for _, img in p.imap_unordered(
             FakeTextDataGenerator.generate_from_tuple,
@@ -109,7 +115,7 @@ def gen_text_img(num, use_file, text_length, font_size, font_id, space_width, ba
                 strings,
                 [fonts[font_id]] * num if font_id else [fonts[random.randrange(0, len(fonts))] for _ in range(0, num)],
                 [output_dir] * num,
-                [font_size] * num if font_size else [random.randrange(24, 40) for _ in range(0, num)],
+                [font_size] * num if font_size else [random.randrange(28, 36) for _ in range(0, num)],
                 [extension] * num,
                 [skew_angle] * num,
                 [random_skew] * num,
@@ -129,7 +135,9 @@ def gen_text_img(num, use_file, text_length, font_size, font_id, space_width, ba
                 [fit] * num
             )
     ):
-        result.append((_, img))
+        if mutex.acquire(1):
+            result.append((_, img))
+            mutex.release()
 
     p.terminate()
     target = np.concatenate([img for _, img in result], axis=1)
@@ -142,22 +150,33 @@ def gen_text_img(num, use_file, text_length, font_size, font_id, space_width, ba
 if __name__ == '__main__':
     num = 10
     use_file = 1
-    text_length = 10
+    text_length = -1
     font_size = 0
     font_id = 1
     space_width = 1
     text_color = '#282828'
     thread_count = 8
     
-    #skew & blur 
+    # skew & blur 
+    """
+        If random_xxx is set True, the following variable decides the range.
+        If random_xxx is set True, the following variable decides the constant.
+        The variable should be set in NON-NEGATIVE INTEGER.
+        skew_angle is better not be greater than 3.
+        blur is better not be greater than 2.   
+    """
     random_skew = True
-    skew_angle = 3
+    skew_angle = 3  
     random_blur = True
     blur = 1
     
-    #distorsion & background Use
-    distorsion = -1
-    background = -1
+    #distorsion & background 
+    """
+        distorsion: 0: None (Default), 1: Sine wave, 2: Cosine wave, -1: Random
+        background: 0: Gaussian Noise, 1: Plain white, 2: Quasicrystal, -1:Random
+    """
+    distorsion = 0
+    background = 1
 
     start_time = time.time()
     df, target = gen_text_img(num, use_file, text_length, font_size, font_id, space_width, background, text_color,

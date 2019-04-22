@@ -39,6 +39,25 @@ def create_strings_from_file(file_names, text_length, num):
     return strings
 
 
+def create_strings_from_file_random(file_names, num):
+    """
+        Same as create_strings_from_file but text_length is random.
+    """
+    strings = []
+    if len(file_names)==0:
+        file_names[0] = 'files/16.txt'
+    for filename in file_names:
+        with open(filename, 'r', encoding="utf8") as f:
+            lines = [l.strip(' ').strip()[0:random.randint(8,12)] for l in f.readlines()]
+            if len(lines) >= num - len(strings):
+                    strings.extend(lines[0:num - len(strings)])
+            else:
+                    strings.extend(lines)
+    if len(strings) == 0:
+        raise Exception("No lines could be read in file")
+    return strings
+
+
 def create_strings_from_dict(length, allow_variable, count, lang_dict):
     """
         Create all strings by picking X random word in the dictionnary
