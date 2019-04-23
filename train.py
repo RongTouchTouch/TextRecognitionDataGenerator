@@ -5,9 +5,11 @@ from itertools import chain
 import numpy as np
 import torch
 from torch.optim import Adam
+import torch.nn as nn
 
-from models.densenet import DenseNet
+from models.densenet_ import DenseNet
 from generate import gen_text_img
+from utils.converter import LabelConverter
 
 logger = logging.getLogger(__name__)
 __pwd__ = path.realpath(path.dirname(__file__))
@@ -32,10 +34,25 @@ def train():
         encoder = TextEncoder(chain.from_iterable(l.strip('\n') for l in fp.readlines()))
 
     # create DenseNet model
+    """
+    model_params = {}
+    model_params['architecture'] = 'densenet121'
+    model_params['num_classes'] = len(encoder) + 1
+    model_params['mean'] = (0.5,)
+    model_params['std'] = (0.5,)
+    model = init_network(model_params)
+    """
     model = DenseNet(img_height=32, drop_rate=0.2, num_classes=encoder.size())
-    optimizer = Adam(p for p in model.parameters() if p.requires_grad)
+
 
     logger.info('parameters:', sum(t.numel() for t in model.parameters() if t.requires_grad))
+
+    criterion = nn.CTCLoss()
+    # criterion = nn.CTCLoss(zero_infinity=True)
+    # define optimizer
+    optimizer = Adam(p for p in model.parameters() if p.requires_grad)
+
+    converter = LabelConverter(encoder, ignore_case=False)
 
     for batch in range(100):
         num = 10

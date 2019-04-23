@@ -2,16 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="e71bd3e7-0df4-4957-983b-225b535a852a" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/models/densenet.py" beforeDir="false" afterPath="$PROJECT_DIR$/models/densenet.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pictures/bricks.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/pictures/city.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/pictures/containers.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/pictures/water.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/texts/random_1.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/texts/random_2.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/texts/random_3.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/texts/test.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data_generator.py" beforeDir="false" afterPath="$PROJECT_DIR$/data_generator.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/datasets/dataset.py" beforeDir="false" afterPath="$PROJECT_DIR$/datasets/dataset.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/generate.py" beforeDir="false" afterPath="$PROJECT_DIR$/generate.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/target.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/out/target.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/train.py" beforeDir="false" afterPath="$PROJECT_DIR$/train.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -19,32 +14,39 @@
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
+  <component name="CoverageDataManager">
+    <SUITE FILE_PATH="coverage/TextRecognitionDataGenerator$densenet.coverage" NAME="densenet Coverage Results" MODIFIED="1555923932076" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/models" />
+    <SUITE FILE_PATH="coverage/TextRecognitionDataGenerator$densenet_.coverage" NAME="densenet_ Coverage Results" MODIFIED="1555923947783" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/models" />
+  </component>
   <component name="FUSProjectUsageTrigger">
     <session id="-791801210">
       <usages-collector id="statistics.lifecycle.project">
         <counts>
+          <entry key="project.closed" value="1" />
           <entry key="project.open.time.3" value="1" />
           <entry key="project.opened" value="1" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
         <counts>
-          <entry key="py" value="6" />
+          <entry key="py" value="11" />
+          <entry key="txt" value="1" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.open">
         <counts>
-          <entry key="Python" value="6" />
+          <entry key="PLAIN_TEXT" value="1" />
+          <entry key="Python" value="11" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
-          <entry key="py" value="16" />
+          <entry key="py" value="224" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="Python" value="16" />
+          <entry key="Python" value="224" />
         </counts>
       </usages-collector>
     </session>
@@ -54,8 +56,34 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/models/densenet.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-266">
-              <caret line="46" column="20" selection-start-line="46" selection-start-column="20" selection-end-line="46" selection-end-column="20" />
+            <state relative-caret-position="-1737">
+              <caret column="68" selection-start-column="68" selection-end-column="68" />
+              <folding>
+                <element signature="e#229#240#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/models/densenet_.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="1976">
+              <caret line="104" column="75" selection-start-line="104" selection-start-column="75" selection-end-line="104" selection-end-column="75" />
+              <folding>
+                <element signature="e#0#18#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/models/crnn.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-1699">
+              <folding>
+                <element signature="e#0#9#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -63,7 +91,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/generate.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-3010">
+            <state relative-caret-position="3287">
+              <caret line="173" column="7" selection-start-line="173" selection-start-column="7" selection-end-line="173" selection-end-column="7" />
               <folding>
                 <element signature="e#0#9#0" expanded="true" />
               </folding>
@@ -74,7 +103,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/train.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-540">
+            <state relative-caret-position="361">
+              <caret line="58" column="20" lean-forward="true" selection-start-line="58" selection-start-column="20" selection-end-line="58" selection-end-column="20" />
               <folding>
                 <element signature="e#0#14#0" expanded="true" />
               </folding>
@@ -82,35 +112,20 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/main.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="304">
-              <caret line="103" column="22" lean-forward="true" selection-start-line="103" selection-start-column="22" selection-end-line="103" selection-end-column="22" />
-              <folding>
-                <element signature="e#0#9#0" expanded="true" />
-              </folding>
+            <state relative-caret-position="-3914">
+              <caret line="13" selection-start-line="13" selection-end-line="13" selection-end-column="42" />
             </state>
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/datasets/datahelpers.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="361">
-              <caret line="19" lean-forward="true" selection-start-line="19" selection-end-line="19" />
-              <folding>
-                <element signature="e#0#9#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/datasets/dataset.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-768">
-              <caret line="47" lean-forward="true" selection-start-line="47" selection-end-line="47" />
+            <state relative-caret-position="323">
+              <caret line="44" column="54" selection-start-line="44" selection-start-column="54" selection-end-line="44" selection-end-column="54" />
               <folding>
                 <element signature="e#0#9#0" expanded="true" />
               </folding>
@@ -126,9 +141,12 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/datasets/dataset.py" />
         <option value="$PROJECT_DIR$/datasets/datahelpers.py" />
         <option value="$PROJECT_DIR$/main.py" />
+        <option value="$PROJECT_DIR$/generate.py" />
+        <option value="$PROJECT_DIR$/data_generator.py" />
+        <option value="$PROJECT_DIR$/datasets/dataset.py" />
+        <option value="$PROJECT_DIR$/train.py" />
       </list>
     </option>
   </component>
@@ -164,6 +182,11 @@
             <path>
               <item name="TextRecognitionDataGenerator" type="b2602c69:ProjectViewProjectNode" />
               <item name="TextRecognitionDataGenerator" type="462c0819:PsiDirectoryNode" />
+              <item name="dicts" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="TextRecognitionDataGenerator" type="b2602c69:ProjectViewProjectNode" />
+              <item name="TextRecognitionDataGenerator" type="462c0819:PsiDirectoryNode" />
               <item name="models" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
@@ -175,7 +198,7 @@
   </component>
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../crnn.pytorch" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
   </component>
@@ -190,6 +213,62 @@
         </RuleState>
       </list>
     </option>
+  </component>
+  <component name="RunManager" selected="Python.densenet_">
+    <configuration name="densenet" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <module name="TextRecognitionDataGenerator" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/models" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/models/densenet.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="densenet_" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <module name="TextRecognitionDataGenerator" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/models" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/models/densenet_.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <list>
+      <item itemvalue="Python.densenet" />
+      <item itemvalue="Python.densenet_" />
+    </list>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Python.densenet_" />
+        <item itemvalue="Python.densenet" />
+      </list>
+    </recent_temporary>
   </component>
   <component name="SvnConfiguration">
     <configuration />
@@ -206,7 +285,6 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="-7" width="1550" height="838" extended-state="6" />
-    <editor active="true" />
     <layout>
       <window_info id="Favorites" side_tool="true" />
       <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.24966443" />
@@ -219,7 +297,7 @@
       <window_info anchor="bottom" id="Event Log" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info anchor="bottom" id="Run" order="2" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.32907802" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -238,16 +316,45 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/datasets/datahelpers.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="361">
+          <caret line="19" selection-start-line="19" selection-end-line="19" />
+          <folding>
+            <element signature="e#0#9#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/dicts/chars.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-15903" />
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/models/densenet.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-266">
-          <caret line="46" column="20" selection-start-line="46" selection-start-column="20" selection-end-line="46" selection-end-column="20" />
+        <state relative-caret-position="-1737">
+          <caret column="68" selection-start-column="68" selection-end-column="68" />
+          <folding>
+            <element signature="e#229#240#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/models/densenet_.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1976">
+          <caret line="104" column="75" selection-start-line="104" selection-start-column="75" selection-end-line="104" selection-end-column="75" />
+          <folding>
+            <element signature="e#0#18#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/generate.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-3010">
+        <state relative-caret-position="3287">
+          <caret line="173" column="7" selection-start-line="173" selection-start-column="7" selection-end-line="173" selection-end-column="7" />
           <folding>
             <element signature="e#0#9#0" expanded="true" />
           </folding>
@@ -256,37 +363,63 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/train.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-540">
+        <state relative-caret-position="361">
+          <caret line="58" column="20" lean-forward="true" selection-start-line="58" selection-start-column="20" selection-end-line="58" selection-end-column="20" />
           <folding>
             <element signature="e#0#14#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/datasets/dataset.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-768">
-          <caret line="47" lean-forward="true" selection-start-line="47" selection-end-line="47" />
-          <folding>
-            <element signature="e#0#9#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/datasets/datahelpers.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="361">
-          <caret line="19" lean-forward="true" selection-start-line="19" selection-end-line="19" />
-          <folding>
-            <element signature="e#0#9#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/main.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="304">
-          <caret line="103" column="22" lean-forward="true" selection-start-line="103" selection-start-column="22" selection-end-line="103" selection-end-column="22" />
+        <state relative-caret-position="-3914">
+          <caret line="13" selection-start-line="13" selection-end-line="13" selection-end-column="42" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/data_generator.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2432">
+          <caret line="140" column="75" selection-start-line="140" selection-start-column="75" selection-end-line="140" selection-end-column="75" />
+          <folding>
+            <element signature="e#0#9#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/string_generator.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-627">
+          <folding>
+            <element signature="e#0#13#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/computer_text_generator.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="672">
+          <caret line="58" lean-forward="true" selection-start-line="58" selection-end-line="58" />
+          <folding>
+            <element signature="e#0#13#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/models/crnn.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-1699">
+          <folding>
+            <element signature="e#0#9#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/datasets/dataset.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="323">
+          <caret line="44" column="54" selection-start-line="44" selection-start-column="54" selection-end-line="44" selection-end-column="54" />
           <folding>
             <element signature="e#0#9#0" expanded="true" />
           </folding>

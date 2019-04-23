@@ -2,6 +2,7 @@ import os
 import random
 import numpy as np
 import pandas as pd
+import platform
 
 from PIL import Image, ImageFilter
 import cv2
@@ -123,7 +124,7 @@ class FakeTextDataGenerator(object):
         blur = blur if not random_blur else random.randint(0, blur)
         final_image = background.filter(
             ImageFilter.GaussianBlur(
-                radius=(blur)
+                radius = blur
             )
         )
 
@@ -147,13 +148,18 @@ class FakeTextDataGenerator(object):
         # Resize
         final_image = np.asarray(final_image)
         final_image = cv2.resize(final_image, (int(final_image.shape[1] * 32 / final_image.shape[0]), 32))
-        
-        font = font.split('/')[2].split('.')[0]
-                          
-        background = ['Guassian','Plain white','Quasicrystal']
-        distorsion = ['None','Sine wave','Cosine wave']
-        
-        data = pd.DataFrame(np.array([[index,text,len(text),final_image.shape[1],size, font,skewing_angle,blur,distorsion[distorsion_type],background[background_type]]]), columns=['index','text','text_length', 'img_shape','font_size','font_id','skew_angle','blur','distorsion_type','background_type'])
 
+        if platform.system() == "Windows":
+            font = font.split('\\')[1].split('.')[0]
+        else:  # linux
+            font = font.split('/')[2].split('.')[0]
+                          
+        background = ['Guassian', 'Plain white', 'Quasicrystal']
+        distorsion = ['None', 'Sine wave', 'Cosine wave']
+        
+        data = pd.DataFrame(np.array([[index, text, len(text), final_image.shape[1], size, font, skewing_angle, blur,
+                                       distorsion[distorsion_type], background[background_type]]]),
+                            columns=['index', 'text', 'text_length', 'img_shape', 'font_size', 'font_id', 'skew_angle',
+                                     'blur', 'distorsion_type', 'background_type'])
 
         return data, final_image

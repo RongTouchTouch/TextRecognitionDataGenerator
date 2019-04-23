@@ -21,15 +21,6 @@ class InMemoryDigitsDataset(data.Dataset):
         self.img_names = []
         self.targets = []
 
-        label_path = os.path.join(data_root, '{}.txt'.format(mode))
-        with open(label_path, 'r') as f:
-            for line in f.readlines():
-                line = line.strip().split()
-                self.img_names.append(line[0])
-                self.targets.append(line[1:])
-                # print(self.img_names)
-                # print(self.targets)
-
     def __len__(self):
         return len(self.img_names)
 

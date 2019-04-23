@@ -180,7 +180,7 @@ if __name__ == '__main__':
 
     start_time = time.time()
     df, target = gen_text_img(num, use_file, text_length, font_size, font_id, space_width, background, text_color,
-                              blur,random_blur, distorsion, skew_angle, random_skew, thread_count)
+                              blur, random_blur, distorsion, skew_angle, random_skew, thread_count)
     cv2.imwrite(os.path.join('out/' + 'target.jpg'), target)
     end_time = time.time()
     print('time for synthesize 1000 image:', end_time - start_time)
