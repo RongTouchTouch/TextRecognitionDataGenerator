@@ -94,3 +94,28 @@ class LabelConverter(object):
         probs = probs.transpose(1, 0).contiguous().reshape(-1)
         preds = self.decode(probs, lengths, raw=raw, strings=strings)
         return preds
+
+    
+class IndexConverter(object):
+    def __init__(self, alphabet, ignore_case=True):
+        self._ignore_case = ignore_case
+        if self._ignore_case:
+            alphabet = alphabet.lower()
+        self.alphabet = alphabet + '-'  # for `-1` index
+
+        self.dict = {}
+        for i, char in enumerate(alphabet):
+            # NOTE: 0 is reserved for 'blank' required by wrap_ctc
+            self.dict[char] = i + 1
+    
+    def encode(self, text):
+        index = []
+        for i in range(len(text)):
+            index.append(self.dict[text[i]])
+        return index
+    
+    def decode(self, index):
+        text = []
+        for i in range(len(index)):
+            text.append(self.dict[index[i]])
+        return text
