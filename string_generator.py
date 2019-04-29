@@ -16,10 +16,11 @@ def create_strings_from_file(file_names, text_length, num):
         P.P.S The filename should be alphabet or number.
     """
     strings = []
-    if len(file_names)==0:
-        file_names[0] = 'files/16.txt'
     for filename in file_names:
         with open(filename, 'r', encoding="utf8") as f:
+            for i in range(random.randint(0,num)):
+                f.readline()
+            print(f.tell())
             content = f.readlines()
             for txt in content:
                 txt = txt.strip()

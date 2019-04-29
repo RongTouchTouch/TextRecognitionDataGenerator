@@ -30,7 +30,7 @@ class InMemoryDigitsDataset(data.Dataset):
             for i in range(total):
                 #print(text.iloc[i]['text'])
                 self.texts.append(self.converter.encode(text.iloc[i]['text']))
-                self.images.append(Image.fromarray(self.img[:,base:base+int(text.iloc[i]['img_shape']),:]).convert('L'))
+                self.images.append(Image.fromarray(self.img[:,base:base+int(text.iloc[i]['img_shape']),:]))
                 base += int(text.iloc[i]['img_shape'])
 
     def __len__(self):

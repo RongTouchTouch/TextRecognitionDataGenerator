@@ -111,7 +111,11 @@ class IndexConverter(object):
     def encode(self, text):
         index = []
         for i in range(len(text)):
-            index.append(self.dict[text[i]])
+            if text[i] in self.dict: 
+                index.append(self.dict[text[i]])
+            else:
+                pass
+                #index.append()
         return index
     
     def decode(self, index):
