@@ -141,7 +141,7 @@ def inmemory_train(batch):
 class InMemoryDigitsBatchDev:
     def __init__(self, batch):
         transposed_data = list(zip(*batch))
-        self.images = torch.stack(transposed_data[0], 0)
+        self.images = [transposed_data[0][i] for i in range(len(transposed_data[0]))]
         self.targets = [i.tolist() for i in transposed_data[1]]
 
     def pin_memory(self):
