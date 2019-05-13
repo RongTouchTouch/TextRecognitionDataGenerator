@@ -28,7 +28,6 @@ def _apply_func_distorsion(image, vertical, horizontal, max_offset, func):
             )
         )
     ]
-
     new_img_arr = np.zeros((
                         img_arr.shape[0] + (2 * max_offset if vertical else 0),
                         img_arr.shape[1] + (2 * max_offset if horizontal else 0),

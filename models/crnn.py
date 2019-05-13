@@ -33,13 +33,11 @@ class CRNN(nn.Module):
     def forward(self, x):
         # x -> features
         out = self.features(x)
-        print(out.shape)
         # features -> pool -> flatten -> classifier -> softmax
         out = self.avgpool(out)
         out = out.permute(3, 0, 1, 2).view(out.size(3), out.size(0), -1)
         out = self.classifier(out)
         out = F.log_softmax(out, dim=2)
-
         return out
 
     def __repr__(self):

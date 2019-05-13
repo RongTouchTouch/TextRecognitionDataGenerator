@@ -167,6 +167,7 @@ def densenet121(pretrained=False, **kwargs):
     model = DenseNet(num_init_features=24, growth_rate=12, block_config=(6, 12, 24, 16), **kwargs)
     return model
 
+
 if __name__ == '__main__':
 
     # model = DenseNet(num_init_features=64, growth_rate=32, small_inputs=False, block_config=(6, 12, 24, 16))
