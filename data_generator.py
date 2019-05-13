@@ -146,7 +146,10 @@ class FakeTextDataGenerator(object):
 
         # Resize
         final_image = np.asarray(final_image)
-        final_image = cv2.resize(final_image, (int(final_image.shape[1] * 32 / final_image.shape[0]), 32))
+        if orientation == 0:
+            final_image = cv2.resize(final_image, (int(final_image.shape[1] * 32 / final_image.shape[0]), 32))
+        else:
+            final_image = cv2.resize(final_image, (32, int(final_image.shape[0] * 32 / final_image.shape[1])))
 
         if platform.system() == "Windows":
             font = font.split('\\')[1].split('.')[0]
