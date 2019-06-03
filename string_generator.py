@@ -19,8 +19,8 @@ def create_strings_from_file(file_names, text_length, num):
     strings = []
     for filename in file_names:
         with open(filename, 'r', encoding="utf8") as f:
-            for i in range(int(time.time()%1000)):
-                f.readline()
+#             for i in range(int(time.time()%1000)):
+#                 f.readline()
 #             print(f.tell())
             content = f.readlines()
             for txt in content:

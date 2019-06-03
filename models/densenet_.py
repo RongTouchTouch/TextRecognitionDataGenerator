@@ -92,10 +92,19 @@ class DenseNet(nn.Module):
     def forward(self, x: torch.Tensor):
         # x = F.pad(x, (1,2,1,2)) # this is how keras "same" padding in Conv2d
         features = self.features(x)
+#         print("features",features.shape)
         out = F.relu(features, inplace=True)
+#         print("after relu = before permute",out.shape)
         batch, channel, height, width = out.shape
         out = out.permute(0, 3, 1, 2).reshape(batch*width, -1)
+#         print("after permute:",out.shape)
+#         print("after classifier",self.classifier(out).shape)
         out = self.classifier(out).reshape(batch, width, -1)
+#         print("after classifier reshape",out.shape)
+        out = F.log_softmax(out, dim=2)
+#         print("after log_softmax",out.shape)
+        out = out.permute(1,0,2)
+#         print("after permute",out.shape)
         return out
 
 if __name__ == '__main__':
@@ -107,26 +116,27 @@ if __name__ == '__main__':
 
     print('parameters:', sum(t.numel() for t in model.parameters() if t.requires_grad))
 
-    from PIL import Image, ImageOps
-    with Image.open('/tmp/xx/test_line.png') as img:
-        img = img.convert('L')
-        width, height = img.size[0], img.size[1]
-        scale = height * 1.0 / 32
-        width = int(width / scale)
+    #from PIL import Image, ImageOps
+    #with Image.open('/tmp/xx/test_line.png') as img:
+    #    img = img.convert('L')
+    #    width, height = img.size[0], img.size[1]
+    #    scale = height * 1.0 / 32
+    #    width = int(width / scale)
 
-        img = img.resize([width, 32], Image.ANTIALIAS)
+    #    img = img.resize([width, 32], Image.ANTIALIAS)
 
-        img_array = np.array(img.convert('1'))
-        boundary_array = np.concatenate((img_array[0, :], img_array[:, width - 1], img_array[31, :], img_array[:, 0]),
-                                        axis=0)
-        if np.median(boundary_array) == 0:  # 将黑底白字转换为白底黑字
-            img = ImageOps.invert(img)
+    #    img_array = np.array(img.convert('1'))
+    #    boundary_array = np.concatenate((img_array[0, :], img_array[:, width - 1], img_array[31, :], img_array[:, 0]),
+    #                                    axis=0)
+    #    if np.median(boundary_array) == 0:  # 将黑底白字转换为白底黑字
+    #        img = ImageOps.invert(img)
 
-        img = np.array(img).astype(np.float32) / 255.0 - 0.5
-        print(img.shape)
+    #    img = np.array(img).astype(np.float32) / 255.0 - 0.5
+    #    print(img.shape)
 
-        X = img.reshape([1, 1, 32, width])
+    #    X = img.reshape([1, 1, 32, width])
+    X = np.random.rand(1,1,32,127).astype(np.float32)
 
-        logit = model.forward(torch.from_numpy(X))
+    logit = model.forward(torch.from_numpy(X))
 
-        print(logit.shape)
+    print(logit.shape)

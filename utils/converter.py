@@ -91,6 +91,8 @@ class LabelConverter(object):
     def best_path_decode(self, probs, raw=False, strings=True):
         lengths = torch.full((probs.shape[1],), probs.shape[0], dtype=torch.int32)
         _, probs = probs.max(2)
+#         print(_)
+#         print(probs.shape)
         probs = probs.transpose(1, 0).contiguous().reshape(-1)
         preds = self.decode(probs, lengths, raw=raw, strings=strings)
         return preds

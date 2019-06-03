@@ -37,10 +37,11 @@ class InMemoryDigitsDataset(data.Dataset):
         return self.total
 
     def __getitem__(self, idx):
+        image = self.images[idx].convert('L')
         if self.transform is not None:
-            image = self.transform(self.images[idx])
+            image = self.transform(image)
         else:
-            image = self.images[idx]
+            image = image
         target = self.texts[idx]
         target = torch.IntTensor([int(i) for i in target])
 

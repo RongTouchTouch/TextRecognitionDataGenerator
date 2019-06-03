@@ -3,6 +3,7 @@ import random
 import numpy as np
 import pandas as pd
 import platform
+import torch
 
 from PIL import Image, ImageFilter
 import cv2
@@ -10,6 +11,7 @@ import cv2
 import computer_text_generator
 import background_generator
 import distorsion_generator
+import image_process
 
 class FakeTextDataGenerator(object):
     @classmethod
@@ -22,9 +24,10 @@ class FakeTextDataGenerator(object):
 
 
     @classmethod
-    def generate(cls, index, text, font, out_dir, size, extension,
+    def generate(cls, index, text, font, out_dir, size, extension, channel,
                  skewing_angle, random_skew, blur, random_blur,
                  background_type, distorsion_type, distorsion_orientation,
+                 random_process, noise, erode, dilate, incline, 
                  is_handwritten, name_format, width, alignment, text_color,
                  orientation, space_width, margins, fit):
 
@@ -44,7 +47,7 @@ class FakeTextDataGenerator(object):
         else:
             image = computer_text_generator.generate(text, font, text_color, size, orientation, space_width, fit)
 
-        random_angle = random.randint(0-skewing_angle, skewing_angle)
+        random_angle = random.random()*random.randint(0-skewing_angle, skewing_angle)
         skewing_angle = skewing_angle if not random_skew else random_angle
         rotated_img = image.rotate(skewing_angle, expand=1)
 
@@ -95,6 +98,7 @@ class FakeTextDataGenerator(object):
         #############################
         # Generate background image #
         #############################
+        
         if background_type == 0:
             background = background_generator.gaussian_noise(background_height, background_width)
         elif background_type == 1:
@@ -107,7 +111,7 @@ class FakeTextDataGenerator(object):
         #############################
         # Place text with alignment #
         #############################
-
+        
         new_text_width, _ = resized_img.size
 
         if alignment == 0 or width == -1:
@@ -121,12 +125,22 @@ class FakeTextDataGenerator(object):
         # Apply gaussian blur #
         ##################################
         
+        blur = blur if not random_blur else random.random()*blur
         final_image = background.filter(
             ImageFilter.GaussianBlur(
-                radius = (blur if not random_blur else random.random()*blur)
+                radius = blur
             )
         )
-
+               
+        ##################################
+        # Apply image process #
+        ##################################
+        
+        final_image = np.asarray(final_image)
+        incline = min(incline, int(final_image.shape[1]/4))
+        final_image, noise, dilate, erode, incline = image_process.do(random_process, noise, erode, dilate, incline, final_image)
+        final_image = Image.fromarray(final_image)
+        
         #####################################
         # Generate name for resulting image #
         #####################################
@@ -141,7 +155,10 @@ class FakeTextDataGenerator(object):
             image_name = '{}_{}.{}'.format(text, str(index), extension)
 
         # Save the image
-        final_image = final_image.convert('RGB')
+        if channel == 3:
+            final_image = final_image.convert('RGB')
+        elif channel ==1:
+            final_image = final_image.convert('L')
         #final_image.save(os.path.join(out_dir, image_name))
 
         # Resize
@@ -156,12 +173,14 @@ class FakeTextDataGenerator(object):
         else:  # linux
             font = font.split('/')[2].split('.')[0]
                           
-        background = ['Guassian', 'Plain white', 'Quasicrystal']
+        background = ['Guassian', 'Plain white', 'Quasicrystal','Image']
         distorsion = ['None', 'Sine wave', 'Cosine wave']
         
         data = pd.DataFrame(np.array([[index, text, len(text), final_image.shape[1], size, font, skewing_angle, blur,
-                                       distorsion[distorsion_type], background[background_type]]]),
+                                       distorsion[distorsion_type], background[background_type],
+                                       noise, erode, dilate, incline]]),
                             columns=['index', 'text', 'text_length', 'img_shape', 'font_size', 'font_id', 'skew_angle',
-                                     'blur', 'distorsion_type', 'background_type'])
-
+                                     'blur', 'distorsion_type', 'background_type','num_noise','erode','dilate','incline'])
+        if channel == 1 :
+            final_image = np.asarray(torch.Tensor(np.asarray(final_image)).unsqueeze(0).permute(1,2,0),dtype='uint8')
         return data, final_image

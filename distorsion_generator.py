@@ -58,7 +58,7 @@ def sin(image, vertical=False, horizontal=False):
         Apply a sine distorsion on one or both of the specified axis
     """
 
-    max_offset = int(image.height ** 0.5)
+    max_offset = int(image.height ** 0.4)
 
     return _apply_func_distorsion(image, vertical, horizontal, max_offset, (lambda x: int(math.sin(math.radians(x)) * max_offset)))
 
@@ -67,7 +67,7 @@ def cos(image, vertical=False, horizontal=False):
         Apply a cosine distorsion on one or both of the specified axis
     """
 
-    max_offset = int(image.height ** 0.5)
+    max_offset = int(image.height ** 0.4)
 
     return _apply_func_distorsion(image, vertical, horizontal, max_offset, (lambda x: int(math.cos(math.radians(x)) * max_offset)))
 
@@ -76,6 +76,6 @@ def random(image, vertical=False, horizontal=False):
         Apply a random distorsion on one or both of the specified axis
     """
 
-    max_offset = int(image.height ** 0.4)
+    max_offset = int(image.height ** 0.3)
 
     return _apply_func_distorsion(image, vertical, horizontal, max_offset, (lambda x: random.randint(0, max_offset)))

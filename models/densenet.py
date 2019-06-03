@@ -153,8 +153,10 @@ class DenseNet(nn.Module):
 
     def forward(self, x):
         features = self.features(x)
+        print(f'features size {features.shape}')
         out = F.relu(features, inplace=True)
         out = F.adaptive_avg_pool2d(out, (1, 1)).view(out.size(0), -1)
+        print(f'pool2d size {out.shape}')
         out = self.classifier(out)
         return out
 
@@ -173,6 +175,7 @@ if __name__ == '__main__':
     # model = DenseNet(num_init_features=64, growth_rate=32, small_inputs=False, block_config=(6, 12, 24, 16))
     # x = torch.randn(1, 3, 224, 224)
     model = DenseNet()
-    x = torch.randn(1, 3, 32, 32)
+    #x = torch.randn(1, 3, 32, 32)
+    x = torch.randn(2, 3, 32, 127)
     y = model(x)
     print('out: {}'.format(y.size()))
