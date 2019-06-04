@@ -3,32 +3,14 @@
   <component name="ChangeListManager">
     <list default="true" id="e71bd3e7-0df4-4957-983b-225b535a852a" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.ipynb_checkpoints/GenTextDemo-checkpoint.ipynb" beforeDir="false" afterPath="$PROJECT_DIR$/.ipynb_checkpoints/GenTextDemo-checkpoint.ipynb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.ipynb_checkpoints/NewDenseNetDemo-checkpoint.ipynb" beforeDir="false" afterPath="$PROJECT_DIR$/.ipynb_checkpoints/NewDenseNetDemo-checkpoint.ipynb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.ipynb_checkpoints/PretrainedDenseDemo-checkpoint.ipynb" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.ipynb_checkpoints/UnFixedDenseNetDemo-checkpoint.ipynb" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.ipynb_checkpoints/record-checkpoint.ipynb" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.ipynb_checkpoints/tests-checkpoint.ipynb" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/DenseDemo.ipynb" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/GenTextDemo.ipynb" beforeDir="false" afterPath="$PROJECT_DIR$/GenTextDemo.ipynb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.ipynb_checkpoints/Simple-checkpoint.ipynb" beforeDir="false" afterPath="$PROJECT_DIR$/.ipynb_checkpoints/Simple-checkpoint.ipynb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/NewDenseNetDemo.ipynb" beforeDir="false" afterPath="$PROJECT_DIR$/NewDenseNetDemo.ipynb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/PretrainedDenseDemo.ipynb" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/background_generator.py" beforeDir="false" afterPath="$PROJECT_DIR$/background_generator.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/computer_text_generator.py" beforeDir="false" afterPath="$PROJECT_DIR$/computer_text_generator.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/crnnDemo.ipynb" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/data_generator.py" beforeDir="false" afterPath="$PROJECT_DIR$/data_generator.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/demo.ipynb" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/distorsion_generator.py" beforeDir="false" afterPath="$PROJECT_DIR$/distorsion_generator.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/generate.py" beforeDir="false" afterPath="$PROJECT_DIR$/generate.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/target.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/out/target.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/params.pth" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/record.ipynb" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/run.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/NickDenseNetDemo.ipynb" beforeDir="false" afterPath="$PROJECT_DIR$/NickDenseNetDemo.ipynb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Simple.ipynb" beforeDir="false" afterPath="$PROJECT_DIR$/Simple.ipynb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/datasets/dataset.py" beforeDir="false" afterPath="$PROJECT_DIR$/datasets/dataset.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/files/cn/1.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/models/densenet_.py" beforeDir="false" afterPath="$PROJECT_DIR$/models/densenet_.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/string_generator.py" beforeDir="false" afterPath="$PROJECT_DIR$/string_generator.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests.ipynb" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/train.py" beforeDir="false" afterPath="$PROJECT_DIR$/train.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/train_.py" beforeDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -62,9 +44,10 @@
           <entry key="project.closed" value="1" />
           <entry key="project.open.time.1" value="1" />
           <entry key="project.open.time.27" value="1" />
-          <entry key="project.open.time.3" value="1" />
+          <entry key="project.open.time.3" value="2" />
+          <entry key="project.open.time.39" value="1" />
           <entry key="project.open.time.5" value="1" />
-          <entry key="project.opened" value="4" />
+          <entry key="project.opened" value="6" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
@@ -101,7 +84,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/computer_text_generator.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="141">
+            <state relative-caret-position="931">
               <caret line="52" selection-start-line="52" selection-end-line="53" selection-end-column="35" />
             </state>
           </provider>
@@ -119,8 +102,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/data_generator.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1452">
-              <caret line="113" column="22" selection-start-line="113" selection-start-column="22" selection-end-line="113" selection-end-column="22" />
+            <state relative-caret-position="1957">
+              <caret line="116" column="22" selection-start-line="116" selection-start-column="22" selection-end-line="116" selection-end-column="22" />
             </state>
           </provider>
         </entry>
@@ -128,7 +111,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/../backup4TextGen/run.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="168">
+            <state relative-caret-position="4617">
               <caret line="256" column="14" selection-start-line="256" selection-start-column="14" selection-end-line="256" selection-end-column="58" />
               <folding>
                 <element signature="e#0#15#0" expanded="true" />
@@ -140,8 +123,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/generate.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1090">
-              <caret line="180" column="18" selection-start-line="180" selection-start-column="18" selection-end-line="180" selection-end-column="18" />
+            <state relative-caret-position="3249">
+              <caret line="188" column="18" selection-start-line="188" selection-start-column="18" selection-end-line="188" selection-end-column="18" />
               <folding>
                 <element signature="e#0#9#0" expanded="true" />
               </folding>
@@ -152,7 +135,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/distorsion_generator.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="304">
+            <state relative-caret-position="361">
               <caret line="25" column="23" selection-start-line="25" selection-start-column="23" selection-end-line="25" selection-end-column="23" />
               <folding>
                 <element signature="e#0#10#0" expanded="true" />
@@ -253,6 +236,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -274,12 +258,11 @@
           <select />
         </subPane>
       </pane>
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../backup4TextGen/demo.ipynb" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
   </component>
@@ -389,10 +372,9 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-7" y="-7" width="1550" height="838" extended-state="6" />
-    <editor active="true" />
+    <frame x="-7" y="-7" width="1550" height="838" extended-state="7" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.19060403" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.19597316" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
@@ -433,9 +415,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1292">
           <caret line="68" selection-start-line="68" selection-end-line="68" selection-end-column="37" />
-          <folding>
-            <element signature="e#0#9#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -480,35 +459,13 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1026">
           <caret line="60" selection-start-line="60" selection-end-line="60" />
-          <folding>
-            <element signature="e#0#9#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/string_generator.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <folding>
-            <element signature="e#0#13#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
+      <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/crnnDemo.ipynb">
-      <provider selected="true" editor-type-id="ipnb-editor">
-        <state>
-          <selected id="5" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/alphabet/dev.txt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="76">
-          <caret line="4" column="40" selection-start-line="4" selection-start-column="40" selection-end-line="4" selection-end-column="40" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/crnnDemo.ipynb" />
     <entry file="file://$PROJECT_DIR$/alphabet/alphabet_decode_5990.txt">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="83581">
@@ -516,32 +473,9 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/run.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-6714">
-          <folding>
-            <element signature="e#0#15#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/record.ipynb">
-      <provider selected="true" editor-type-id="ipnb-editor">
-        <state>
-          <selected id="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/main.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1133">
-          <caret line="288" column="20" lean-forward="true" selection-start-line="288" selection-start-column="20" selection-end-line="288" selection-end-column="20" />
-          <folding>
-            <element signature="e#0#9#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/run.py" />
+    <entry file="file://$PROJECT_DIR$/record.ipynb" />
+    <entry file="file://$PROJECT_DIR$/main.py" />
     <entry file="file://$PROJECT_DIR$/demo.ipynb">
       <provider selected="true" editor-type-id="ipnb-editor">
         <state>
@@ -550,10 +484,55 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/handwritten_text_generator.py">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/train.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state>
+        <state relative-caret-position="102">
+          <caret line="397" column="33" lean-forward="true" selection-start-line="397" selection-start-column="33" selection-end-line="397" selection-end-column="33" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/computer_text_generator.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="931">
+          <caret line="52" selection-start-line="52" selection-end-line="53" selection-end-column="35" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/data_generator.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1957">
+          <caret line="116" column="22" selection-start-line="116" selection-start-column="22" selection-end-line="116" selection-end-column="22" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../backup4TextGen/run.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="4617">
+          <caret line="256" column="14" selection-start-line="256" selection-start-column="14" selection-end-line="256" selection-end-column="58" />
+          <folding>
+            <element signature="e#0#15#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/generate.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="3249">
+          <caret line="188" column="18" selection-start-line="188" selection-start-column="18" selection-end-line="188" selection-end-column="18" />
           <folding>
             <element signature="e#0#9#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/distorsion_generator.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="361">
+          <caret line="25" column="23" selection-start-line="25" selection-start-column="23" selection-end-line="25" selection-end-column="23" />
+          <folding>
+            <element signature="e#0#10#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -565,61 +544,17 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/train.py">
+    <entry file="file://$PROJECT_DIR$/alphabet/dev.txt">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="102">
-          <caret line="397" column="33" lean-forward="true" selection-start-line="397" selection-start-column="33" selection-end-line="397" selection-end-column="33" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/generate.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1090">
-          <caret line="180" column="18" selection-start-line="180" selection-start-column="18" selection-end-line="180" selection-end-column="18" />
-          <folding>
-            <element signature="e#0#9#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/../backup4TextGen/run.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="168">
-          <caret line="256" column="14" selection-start-line="256" selection-start-column="14" selection-end-line="256" selection-end-column="58" />
-          <folding>
-            <element signature="e#0#15#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/distorsion_generator.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="304">
-          <caret line="25" column="23" selection-start-line="25" selection-start-column="23" selection-end-line="25" selection-end-column="23" />
-          <folding>
-            <element signature="e#0#10#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/data_generator.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1452">
-          <caret line="113" column="22" selection-start-line="113" selection-start-column="22" selection-end-line="113" selection-end-column="22" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/computer_text_generator.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="141">
-          <caret line="52" selection-start-line="52" selection-end-line="53" selection-end-column="35" />
+        <state relative-caret-position="76">
+          <caret line="4" column="40" selection-start-line="4" selection-start-column="40" selection-end-line="4" selection-end-column="40" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/../backup4TextGen/demo.ipynb">
       <provider selected="true" editor-type-id="ipnb-editor">
         <state>
-          <selected id="0" />
+          <selected id="5" />
         </state>
       </provider>
     </entry>

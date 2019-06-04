@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="WebServers">
+    <option name="servers">
+      <webServer id="baebe0c6-3984-40dc-8a9d-234736c5d8eb" name="lab301" url="http://192.168.50.238">
+        <fileTransfer host="192.168.50.238" port="22" accessType="SFTP">
+          <advancedOptions>
+            <advancedOptions dataProtectionLevel="Private" shareSSLContext="true" />
+          </advancedOptions>
+          <option name="port" value="22" />
+        </fileTransfer>
+      </webServer>
+      <webServer id="8a348029-dea0-42bd-943e-11ff8e346ad0" name="easipass" url="http://192.168.129.140:8188">
+        <fileTransfer host="192.168.129.140" port="8188" accessType="SFTP">
+          <option name="port" value="8188" />
+        </fileTransfer>
+      </webServer>
+    </option>
+  </component>
+</project>
