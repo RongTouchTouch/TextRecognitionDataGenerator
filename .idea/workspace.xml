@@ -1,17 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="e71bd3e7-0df4-4957-983b-225b535a852a" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.ipynb_checkpoints/Simple-checkpoint.ipynb" beforeDir="false" afterPath="$PROJECT_DIR$/.ipynb_checkpoints/Simple-checkpoint.ipynb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/NewDenseNetDemo.ipynb" beforeDir="false" afterPath="$PROJECT_DIR$/NewDenseNetDemo.ipynb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/NickDenseNetDemo.ipynb" beforeDir="false" afterPath="$PROJECT_DIR$/NickDenseNetDemo.ipynb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Simple.ipynb" beforeDir="false" afterPath="$PROJECT_DIR$/Simple.ipynb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/datasets/dataset.py" beforeDir="false" afterPath="$PROJECT_DIR$/datasets/dataset.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/files/cn/1.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/models/densenet_.py" beforeDir="false" afterPath="$PROJECT_DIR$/models/densenet_.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/string_generator.py" beforeDir="false" afterPath="$PROJECT_DIR$/string_generator.py" afterDir="false" />
-    </list>
+    <list default="true" id="e71bd3e7-0df4-4957-983b-225b535a852a" name="Default Changelist" comment="" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -225,7 +215,7 @@
     <detection-done>true</detection-done>
     <sorting>DEFINITION_ORDER</sorting>
   </component>
-  <component name="ProjectFrameBounds" extendedState="7">
+  <component name="ProjectFrameBounds" extendedState="6">
     <option name="x" value="895" />
     <option name="y" value="50" />
     <option name="width" value="1015" />
