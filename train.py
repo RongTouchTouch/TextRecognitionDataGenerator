@@ -107,6 +107,7 @@ def validate(dev_loader, model, epoch, converter):
 
     return accuracy.val
 
+
 def save_checkpoint(state, is_best, directory):
     filename = os.path.join(directory, '{}_epoch_{}.pth.tar'.format(state['arch'], state['epoch']))
     with contextlib.suppress(FileNotFoundError):
@@ -136,15 +137,15 @@ class AverageMeter(object):
         self.sum += val * n
         self.count += n
         self.avg = self.sum / self.count
-        
-        
-if __name__=="__main__":
+
+
+if __name__ == "__main__":
     import sys
-    sys.argv = ['main.py','--dataset-root','alphabet','--alphabet','alphabet/alphabet_decode_5990.txt',
-            '--lr','5e-5','--max-epoch','200','--gpu-id','-1','--not-pretrained']  
+    sys.argv = ['main.py', '--dataset-root', 'alphabet', '--alphabet', 'alphabet/alphabet_decode_5990.txt',
+                '--lr', '5e-5', '--max-epoch','200', '--gpu-id', '-1', '--not-pretrained']
 
     args = arguments.parse_args()
-    
+
     device = torch.device("cpu")
     
     if os.path.isfile(args.alphabet):
@@ -192,7 +193,7 @@ if __name__=="__main__":
     model = DenseNet(num_classes=len(args.alphabet) + 1)
     
     if args.pretrained:
-        model_path = 'pretrained/new_prarams2.pth'
+        model_path = 'pretrained/new_prarams.pth'
         checkpoint = torch.load(model_path,map_location = 'cpu')
         model.load_state_dict(checkpoint)
 

@@ -24,7 +24,7 @@ def create_strings_from_file(file_names, text_length, num):
                 txt = txt.strip()
                 if txt == u"\n":
                     continue
-                offset = random.randint(0,1000)
+                offset = random.randint(0, 1000)
                 text = [txt[i:i + text_length] for i in range(offset, len(txt), text_length)]
                 lines = []
                 for i in range(len(text)):
