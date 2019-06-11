@@ -65,12 +65,13 @@ def create_strings_from_dict(text_length, num, lang_dict):
 
     dict_len = len(lang_dict)
     strings = []
-    for _ in range(0, num):
+    for i in range(0, num):
         current_string = ""
-        for _ in range(0, text_length):
-            current_string += lang_dict[random.randrange(dict_len)][:-1]
+        for j in range(0, text_length):
+            current_string += lang_dict[random.randrange(dict_len)][0]
+            print(current_string)
             # current_string += ' '
-        strings.append(current_string[:-1])
+        strings.append(current_string)
     return strings
 
 
