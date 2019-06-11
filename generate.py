@@ -114,12 +114,10 @@ def gen_text_img(num = 1, use_file = 1, text = None, text_length = 10, font_size
         else:
             strings = create_strings_from_file(file_names, text_length, num)
     else:
-        # to be implemented
-        # strings = create_strings_from_dict(text_length, num, lang_dict)
         if text is not None:
             strings = num*[text]
         else:
-            strings = num*['你好']
+            strings = create_strings_from_dict(text_length, num, lang_dict)
 
     p = Pool(thread_count)
     mutex = threading.Lock()
@@ -171,7 +169,7 @@ def gen_text_img(num = 1, use_file = 1, text = None, text_length = 10, font_size
 
 if __name__ == '__main__':
     num = 1
-    use_file = 1
+    use_file = 0
     text = None
     text_length = 10
     font_size = 32
@@ -203,7 +201,7 @@ if __name__ == '__main__':
                               random_process, noise, erode, dilate, incline,
                               thread_count, channel)
 
-    # cv2.imwrite(os.path.join('out/' + 'target.jpg'), target)
+    cv2.imwrite(os.path.join('out/' + 'target.jpg'), target)
     end_time = time.time()
     print(f'time for synthesize %d image: %f' % (int(num), end_time - start_time))
     print(df)
