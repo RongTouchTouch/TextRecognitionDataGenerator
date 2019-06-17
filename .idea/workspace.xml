@@ -2,8 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="e71bd3e7-0df4-4957-983b-225b535a852a" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/pytorchtools.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dicts/cn.txt" beforeDir="false" afterPath="$PROJECT_DIR$/dicts/cn.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pytorchtools.py" beforeDir="false" afterPath="$PROJECT_DIR$/pytorchtools.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -55,14 +55,14 @@
           <entry key="ipynb" value="10" />
           <entry key="jpg" value="1" />
           <entry key="py" value="40" />
-          <entry key="txt" value="5" />
+          <entry key="txt" value="6" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.open">
         <counts>
           <entry key="IPNB" value="10" />
           <entry key="Image" value="1" />
-          <entry key="PLAIN_TEXT" value="6" />
+          <entry key="PLAIN_TEXT" value="7" />
           <entry key="Python" value="40" />
         </counts>
       </usages-collector>
@@ -83,19 +83,10 @@
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/string_generator.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1691">
-              <caret line="95" column="41" selection-start-line="95" selection-start-column="41" selection-end-line="95" selection-end-column="41" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/generate.py">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="76">
-              <caret line="165" lean-forward="true" selection-start-line="165" selection-end-line="165" />
+              <caret line="165" selection-start-line="165" selection-end-line="165" />
               <folding>
                 <element signature="e#0#9#0" expanded="true" />
               </folding>
@@ -103,14 +94,23 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/pytorchtools.py">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="581">
-              <caret line="44" column="8" selection-start-line="44" selection-start-column="8" selection-end-line="44" selection-end-column="8" />
+              <caret line="44" selection-start-line="44" selection-end-line="44" />
               <folding>
                 <element signature="e#0#18#0" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/dicts/cn.txt">
+          <provider selected="true" editor-type-id="text-editor">
+            <state>
+              <caret column="2" lean-forward="true" selection-start-column="2" selection-end-column="2" />
             </state>
           </provider>
         </entry>
@@ -209,6 +209,7 @@
       <find>\u3000</find>
       <find>width</find>
       <find>fit</find>
+      <find>\n</find>
     </findStrings>
     <replaceStrings>
       <replace>\n</replace>
@@ -236,6 +237,7 @@
         <option value="$PROJECT_DIR$/string_generator.py" />
         <option value="$PROJECT_DIR$/generate.py" />
         <option value="$PROJECT_DIR$/pytorchtools.py" />
+        <option value="$PROJECT_DIR$/dicts/cn.txt" />
       </list>
     </option>
   </component>
@@ -267,6 +269,11 @@
               <item name="TextRecognitionDataGenerator" type="b2602c69:ProjectViewProjectNode" />
               <item name="TextRecognitionDataGenerator" type="462c0819:PsiDirectoryNode" />
               <item name="alphabet" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="TextRecognitionDataGenerator" type="b2602c69:ProjectViewProjectNode" />
+              <item name="TextRecognitionDataGenerator" type="462c0819:PsiDirectoryNode" />
+              <item name="dicts" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="TextRecognitionDataGenerator" type="b2602c69:ProjectViewProjectNode" />
@@ -638,7 +645,7 @@
     <entry file="file://$PROJECT_DIR$/generate.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="76">
-          <caret line="165" lean-forward="true" selection-start-line="165" selection-end-line="165" />
+          <caret line="165" selection-start-line="165" selection-end-line="165" />
           <folding>
             <element signature="e#0#9#0" expanded="true" />
           </folding>
@@ -648,10 +655,17 @@
     <entry file="file://$PROJECT_DIR$/pytorchtools.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="581">
-          <caret line="44" column="8" selection-start-line="44" selection-start-column="8" selection-end-line="44" selection-end-column="8" />
+          <caret line="44" selection-start-line="44" selection-end-line="44" />
           <folding>
             <element signature="e#0#18#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/dicts/cn.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret column="2" lean-forward="true" selection-start-column="2" selection-end-column="2" />
         </state>
       </provider>
     </entry>

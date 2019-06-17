@@ -42,4 +42,3 @@ class EarlyStopping:
         torch.save(model.state_dict(), 'checkpoint.pt')
         self.val_loss_min = val_loss
 
-        
