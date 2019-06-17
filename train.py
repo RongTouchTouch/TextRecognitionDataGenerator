@@ -17,6 +17,7 @@ import torchvision.transforms as transforms
 from utils.converter import LabelConverter, IndexConverter
 from datasets.dataset import InMemoryDigitsDataset, DigitsDataset, collate_train, collate_dev, inmemory_train, inmemory_dev
 from generate import gen_text_img
+from pytorchtools import EarlyStopping
 
 import arguments
 from models.densenet_ import DenseNet
@@ -206,11 +207,6 @@ if __name__ == "__main__":
 
     label_converter = LabelConverter(args.alphabet, ignore_case=False)
 
-    is_best = False
-    best_accuracy = 0.0
-    accuracy = 0.0
-    start_epoch = 0
-
     acc = []
 
     for i in range(iteration):
@@ -234,6 +230,12 @@ if __name__ == "__main__":
         dev_loader = data.DataLoader(dataset=dev_dataset,batch_size=args.batch_size, num_workers=4, shuffle=False,
                                      collate_fn=collate_dev, pin_memory=False)
 
+        is_best = False
+        best_accuracy = 0.0
+        accuracy = 0.0
+        start_epoch = 0
+        early_stopping = EarlyStopping(patience=patience, verbose=True)
+
         for epoch in range(start_epoch, args.max_epoch):
             loss = train(train_loader, model, criterion, optimizer, epoch)
 
@@ -252,12 +254,13 @@ if __name__ == "__main__":
                     'epoch': epoch + 1,
                     'state_dict': model.state_dict(),
                     'best_accuracy': best_accuracy,
-
-
                     'optimizer' : optimizer.state_dict(),
                 }, is_best, args.directory)
 
-            if best_accuracy == 1:
+            early_stopping(loss, model)
+
+            if early_stopping.early_stop:
+                print("Early stopping")
                 break
                 
     torch.save(model.state_dict(), 'pretrained/new_prarams.pth')
