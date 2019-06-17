@@ -169,7 +169,7 @@ def gen_text_img(num = 1, use_file = 1, text = None, text_length = 10, font_size
 
 if __name__ == '__main__':
     num = 1
-    use_file = 0
+    use_file = 1
     text = None
     text_length = 10
     font_size = 32
