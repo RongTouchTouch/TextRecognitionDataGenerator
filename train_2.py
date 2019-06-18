@@ -15,7 +15,8 @@ import torch.utils.data as data
 import torchvision.transforms as transforms
 
 from utils.converter import LabelConverter, IndexConverter
-from datasets.dataset import InMemoryDigitsDataset, DigitsDataset, collate_train, collate_dev, inmemory_train, inmemory_dev
+from datasets.dataset import InMemoryDigitsDataset, DigitsDataset, collate_train, collate_dev, inmemory_train, \
+    inmemory_dev
 from generate import gen_text_img
 from pytorchtools import EarlyStopping
 
@@ -31,10 +32,10 @@ def train(train_loader, model, criterion, optimizer, epoch):
     model.train()
 
     end = time.time()
-    
+
     for i, sample in enumerate(train_loader):
         data_time.update(time.time() - end)
-        
+
         images = sample.images
         images = images.to(device)
         targets = sample.targets
@@ -44,24 +45,24 @@ def train(train_loader, model, criterion, optimizer, epoch):
         optimizer.zero_grad()
 
         log_probs = model(images)
-        input_lengths = torch.full((images.size(0),),log_probs.size(0), dtype=torch.int32, device=device)
+        input_lengths = torch.full((images.size(0),), log_probs.size(0), dtype=torch.int32, device=device)
 
         loss = criterion(log_probs, targets, input_lengths, target_lengths)
         losses.update(loss.item())
         loss.backward()
 
         optimizer.step()
-        
+
         batch_time.update(time.time() - end)
         end = time.time()
 
-        if (i+1) % args.print_freq == 0 or i == 0 or (i+1) == len(train_loader):
+        if (i + 1) % args.print_freq == 0 or i == 0 or (i + 1) == len(train_loader):
             print('>> Train: [{0}][{1}/{2}]\t'
                   'Time {batch_time.val:.3f} ({batch_time.avg:.3f})\t'
                   'Data {data_time.val:.3f} ({data_time.avg:.3f})\t'
                   'Loss {loss.val:.4f} ({loss.avg:.4f})'.format(
-                   epoch+1, i+1, len(train_loader), batch_time=batch_time,
-                   data_time=data_time, loss=losses))
+                epoch + 1, i + 1, len(train_loader), batch_time=batch_time,
+                data_time=data_time, loss=losses))
 
     return losses.avg
 
@@ -75,7 +76,7 @@ def validate(dev_loader, model, epoch, converter):
     num_correct = 0
     num_verified = 0
     end = time.time()
-    
+
     for i, sample in enumerate(dev_loader):
         images = sample.images
         images = images.to(device)
@@ -85,26 +86,26 @@ def validate(dev_loader, model, epoch, converter):
 
         log_probs = model(images)
         preds = converter.best_path_decode(log_probs, strings=False)
-        
+
         batch_time.update(time.time() - end)
         end = time.time()
 
         for i in range(len(targets)):
             num_verified += len(targets[i])
         for pred, target in zip(preds, targets):
-            if(pred == target):
+            if (pred == target):
                 num_correct += 1
-        accuracy.update(num_correct / num_verified) # character-level
-        
-#         for i in range(len(preds)): #打印pred的结果
-#             pred = converter.best_path_decode(log_probs, strings=True)[i].decode('utf-8')
-#             print('pred: {}'.format(pred))
-            
-        if (i+1) % args.print_freq == 0 or i == 0 or (i+1) == len(dev_loader):
+        accuracy.update(num_correct / num_verified)  # character-level
+
+        #         for i in range(len(preds)): #打印pred的结果
+        #             pred = converter.best_path_decode(log_probs, strings=True)[i].decode('utf-8')
+        #             print('pred: {}'.format(pred))
+
+        if (i + 1) % args.print_freq == 0 or i == 0 or (i + 1) == len(dev_loader):
             print('>> Val: [{0}][{1}/{2}]\t'
                   'Time {batch_time.val:.3f} ({batch_time.avg:.3f})\t'
                   'Accu {accuracy.val:.3f}'.format(
-                   epoch+1, i+1, len(dev_loader), batch_time=batch_time, accuracy=accuracy))
+                epoch + 1, i + 1, len(dev_loader), batch_time=batch_time, accuracy=accuracy))
 
     return accuracy.val
 
@@ -124,6 +125,7 @@ def save_checkpoint(state, is_best, directory):
 
 class AverageMeter(object):
     """Computes and stores the average and current value"""
+
     def __init__(self):
         self.reset()
 
@@ -142,13 +144,14 @@ class AverageMeter(object):
 
 if __name__ == "__main__":
     import sys
+
     sys.argv = ['main.py', '--dataset-root', 'alphabet', '--alphabet', 'alphabet/alphabet_decode_5990.txt',
-                '--lr', '5e-5', '--max-epoch','200', '--gpu-id', '-1', '--not-pretrained']
+                '--lr', '5e-5', '--max-epoch', '200', '--gpu-id', '-1', '--not-pretrained']
 
     args = arguments.parse_args()
 
     device = torch.device("cpu")
-    
+
     if os.path.isfile(args.alphabet):
         alphabet = ''
         with open(args.alphabet, mode='r', encoding='utf-8') as f:
@@ -156,11 +159,11 @@ if __name__ == "__main__":
                 alphabet += line.strip()
         args.alphabet = alphabet
 
-    num = 200 # 喂的图片个数
+    num = 64  # 喂的图片个数
     dev_num = num
     use_file = 1
     text = "嘤嘤嘤"
-    text_length = 1
+    text_length = 4
     font_size = -1
     font_id = -1
     space_width = 1
@@ -184,7 +187,7 @@ if __name__ == "__main__":
     dilate = 2
     incline = 10
 
-    iteration = 1 #iteration的个数=喂几组不一样的图片
+    iteration = 1  # iteration的个数=喂几组不一样的图片
 
     transform = transforms.Compose([
         transforms.Resize((32, 280)),
@@ -192,42 +195,57 @@ if __name__ == "__main__":
     ])
 
     model = DenseNet(num_classes=len(args.alphabet) + 1)
-    
+
     if args.pretrained:
         model_path = 'pretrained/new_prarams.pth'
-        checkpoint = torch.load(model_path,map_location = 'cpu')
+        checkpoint = torch.load(model_path, map_location='cpu')
         model.load_state_dict(checkpoint)
 
     criterion = nn.CTCLoss()
-    # critierion = nn.CrossEntropyLoss()
     criterion = criterion.to(device)
 
-    optimizer = optim.SGD(params=model.parameters(),lr=args.lr,
+    optimizer = optim.SGD(params=model.parameters(), lr=args.lr,
                           momentum=args.momentum, weight_decay=args.weight_decay)
 
     label_converter = LabelConverter(args.alphabet, ignore_case=False)
 
     acc = []
 
+    text_meta, text_img = gen_text_img(num, use_file, text, text_length, font_size, font_id, space_width,
+                                       background, text_color,
+                                       orientation, blur, random_blur, distorsion, distorsion_orientation,
+                                       skew_angle, random_skew,
+                                       random_process, noise, erode, dilate, incline,
+                                       thread_count)
+    dev_meta, dev_img = text_meta, text_img
+    index_converter = IndexConverter(args.alphabet, ignore_case=True)
+    train_dataset = InMemoryDigitsDataset(mode='train', text=text_meta, img=text_img, total=num,
+                                          transform=transform, converter=index_converter)
+    dev_dataset = InMemoryDigitsDataset(mode='dev', text=dev_meta, img=dev_img, total=num,
+                                        transform=transform, converter=index_converter)
+
     for i in range(iteration):
-        text_meta, text_img = gen_text_img(num, use_file, text, text_length, font_size, font_id, space_width,
+        new_meta, new_img = gen_text_img(num/4, use_file, text, text_length, font_size, font_id, space_width,
                                            background, text_color,
                                            orientation, blur, random_blur, distorsion, distorsion_orientation,
                                            skew_angle, random_skew,
                                            random_process, noise, erode, dilate, incline,
                                            thread_count)
-        dev_meta, dev_img = text_meta, text_img
 
-        index_converter = IndexConverter(args.alphabet, ignore_case=True)
+        new_train_dataset = InMemoryDigitsDataset(mode='train', text=text_meta, img=text_img, total=num,
+                                              transform=transform, converter=index_converter)
+        train_dataset.images = train_dataset.images[num/4:num].append(new_train_dataset.images)
+        train_dataset.texts = train_dataset.texts[num/4:num].append(new_train_dataset.texts)
 
-        train_dataset = InMemoryDigitsDataset(mode='train', text=text_meta, img=text_img, total=num,
-                                             transform=transform, converter = index_converter)
-        dev_dataset = InMemoryDigitsDataset(mode='dev', text=dev_meta, img=dev_img, total=num,
-                                           transform=transform, converter = index_converter)
+        new_dev_dataset = InMemoryDigitsDataset(mode='dev', text=dev_meta, img=dev_img, total=num,
+                                            transform=transform, converter=index_converter)
+        dev_dataset.images = dev_dataset.images[num/4:num].append(new_dev_dataset.images)
+        dev_dataset.texts = dev_dataset.texts[num/4:num].append(new_dev_dataset.texts)
 
-        train_loader = data.DataLoader(dataset=train_dataset,batch_size=args.batch_size, num_workers=4, shuffle=True,
+
+        train_loader = data.DataLoader(dataset=train_dataset, batch_size=args.batch_size, num_workers=4, shuffle=True,
                                        collate_fn=collate_train, pin_memory=True)
-        dev_loader = data.DataLoader(dataset=dev_dataset,batch_size=args.batch_size, num_workers=4, shuffle=False,
+        dev_loader = data.DataLoader(dataset=dev_dataset, batch_size=args.batch_size, num_workers=4, shuffle=False,
                                      collate_fn=collate_dev, pin_memory=False)
 
         is_best = False
@@ -254,7 +272,7 @@ if __name__ == "__main__":
                     'epoch': epoch + 1,
                     'state_dict': model.state_dict(),
                     'best_accuracy': best_accuracy,
-                    'optimizer' : optimizer.state_dict(),
+                    'optimizer': optimizer.state_dict(),
                 }, is_best, args.directory)
 
             early_stopping(loss, model)
@@ -262,5 +280,5 @@ if __name__ == "__main__":
             if early_stopping.early_stop:
                 print("Early stopping")
                 break
-                
+
     torch.save(model.state_dict(), 'pretrained/new_prarams.pth')
