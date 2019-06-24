@@ -5,18 +5,15 @@ import random
 import shutil
 import contextlib
 import matplotlib.pyplot as plt
-%matplotlib inline
+# %matplotlib inline
 
 import torch
 import torch.optim as optim
 import torch.nn as nn
-import torch.nn.functional as F
-from torch.nn.utils.rnn import pad_sequence
 import torch.utils.data as data
-import torchvision.transforms as transforms
 
 from utils.converter import LabelConverter, IndexConverter
-from datasets.dataset import InMemoryDigitsDataset, DigitsDataset, collate_train, collate_dev, inmemory_train, inmemory_dev
+from datasets.dataset import InMemoryDigitsDataset, inmemory_train, inmemory_dev
 from generate import gen_text_img
 
 import arguments
@@ -81,7 +78,7 @@ if __name__ == '__main__':
                 alphabet += line.strip()
         args.alphabet = alphabet
 
-    num = 100
+    num = 2
     dev_num = num
     use_file = 0
     text = "嘤嘤嘤"
